@@ -10,7 +10,7 @@ cd /root \
 && rm -f android-ndk-r21b.zip \
 && update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20 \
 && update-alternatives --install /usr/bin/python python /usr/bin/python3.7 30 \
-&& apt-get install git \
+&& apt-get install git flex bison \
 && git git clone --recurse-submodules https://github.com/frida/frida \
 && cd frida \
 && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc \
