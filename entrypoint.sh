@@ -11,7 +11,9 @@ cd /root \
 && export ANDROID_NDK_ROOT=${PWD}/android-ndk-r21b \
 && update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20 \
 && update-alternatives --install /usr/bin/python python /usr/bin/python3.7 30 \
-&& apt-get install -y git flex bison \
+&& apt-get install -y git flex bison build-essential gcc-multilib lib32stdc++-5-dev \
+&& curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - \
+&& apt-get install -y nodejs \
 && git clone --recurse-submodules https://github.com/frida/frida \
 && cd frida \
 && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc \
