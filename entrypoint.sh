@@ -8,6 +8,7 @@ cd /root \
 && wget -O android-ndk-r21b.zip https://dl.google.com/android/repository/android-ndk-r21b-linux-x86_64.zip \
 && unzip android-ndk-r21b.zip \
 && rm -f android-ndk-r21b.zip \
+&& ANDROID_NDK_ROOT ${PWD}/android-ndk-r21b \
 && update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20 \
 && update-alternatives --install /usr/bin/python python /usr/bin/python3.7 30 \
 && apt-get install -y git flex bison \
@@ -15,7 +16,6 @@ cd /root \
 && cd frida \
 && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc \
 && make build/frida-android-arm64/lib/pkgconfig/frida-core-1.0.pc \
-&& ANDROID_NDK_ROOT ${PWD}/android-ndk-r21b \
 && DESTDIR=/frida_out
 && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc \
 && make build/frida-android-arm64/lib/pkgconfig/frida-core-1.0.pc
