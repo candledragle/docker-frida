@@ -29,7 +29,7 @@ jobs:
       run: file ${PWD}/frida_out/frida-android-arm/bin/frida-server
     
     - name: upload
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: frida-server-arm-arm64
         path: frida_out/
