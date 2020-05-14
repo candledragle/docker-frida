@@ -1,3 +1,3 @@
 #!/bin/bash
 touch /frida_out/test.txt
-echo "hello world!" > /frida_out/test.txt
+cat /proc/version > /frida_out/test.txt

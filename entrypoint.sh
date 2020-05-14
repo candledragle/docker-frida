@@ -15,8 +15,8 @@ flex bison curl wget unzip libterm-readkey-perl \
 && unzip android-ndk-r21b.zip \
 && rm -f android-ndk-r21b.zip \
 && export ANDROID_NDK_ROOT=${PWD}/android-ndk-r21b \
-&& update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20 \
-&& update-alternatives --install /usr/bin/python python /usr/bin/python3.7 50 \
+&& update-alternatives --install /usr/bin/python python /usr/bin/python2.* 20 \
+&& update-alternatives --install /usr/bin/python python /usr/bin/python3.* 50 \
 && curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - \
 && apt-get install -y nodejs \
 && apt-get install -y npm \

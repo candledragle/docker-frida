@@ -6,5 +6,6 @@ frida: Dockerfile
 all: frida
 	docker run -v ${PWD}/frida_out:/frida_out ${IMAGE}:${TAG}
 
-	
+test: frida
+	docker run -it -v ${PWD}/frida_out:/frida_out ${IMAGE}:${TAG} bash
 .PHONY: all
