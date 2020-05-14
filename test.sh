@@ -11,6 +11,6 @@ flex bison curl wget unzip libterm-readkey-perl \
 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 50 \
 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 50 \
 && ls /usr/bin/python* \
-&& curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - \
+&& curl -sL https://deb.nodesource.com/setup_10.x | bash - \
 && apt-get install -y nodejs \
 && apt-get install -y npm \

@@ -11,15 +11,14 @@ flex bison curl wget unzip libterm-readkey-perl \
 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20 \
 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 50 \
 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 50 \
-&& wget -O android-ndk-r21b.zip https://dl.google.com/android/repository/android-ndk-r21b-linux-x86_64.zip \
-&& unzip android-ndk-r21b.zip \
-&& rm -f android-ndk-r21b.zip \
-&& export ANDROID_NDK_ROOT=${PWD}/android-ndk-r21b \
-&& update-alternatives --install /usr/bin/python python /usr/bin/python2.* 20 \
-&& update-alternatives --install /usr/bin/python python /usr/bin/python3.* 50 \
-&& curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - \
+&& update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20 \
+&& update-alternatives --install /usr/bin/python python /usr/bin/python3.5 50 \
+&& curl -sL https://deb.nodesource.com/setup_10.x | bash - \
 && apt-get install -y nodejs \
 && apt-get install -y npm \
+&& wget -O android-ndk-r21b.zip https://dl.google.com/android/repository/android-ndk-r21b-linux-x86_64.zip \
+&& unzip android-ndk-r21b.zip \
+&& export ANDROID_NDK_ROOT=${PWD}/android-ndk-r21b \
 && git clone --recurse-submodules https://github.com/frida/frida \
 && cd frida \
 && DESTDIR=/frida_out \
