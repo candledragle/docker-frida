@@ -6,7 +6,7 @@ cd /root \
 && add-apt-repository -y ppa:ubuntu-toolchain-r/test \
 && apt-get update \
 && apt-get install -y build-essential gcc-multilib lib32stdc++-5-dev python-dev python3-dev git gcc-9 g++-9 \
-flex bison curl wget unzip libterm-readkey-perl \
+flex bison curl wget unzip libterm-readkey-perl aptitude\
 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 20 \
 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20 \
 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 50 \
