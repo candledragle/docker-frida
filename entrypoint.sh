@@ -24,5 +24,5 @@ flex bison curl wget unzip libterm-readkey-perl aptitude\
 && DESTDIR=/frida_out \
 && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc \
 && make build/frida-android-arm64/lib/pkgconfig/frida-core-1.0.pc \
-&& copy -r build/frida-android-arm /frida_out \
-&& copy -r build/frida-android-arm64 /frida_out 
+&& cp -r build/frida-android-arm /frida_out \
+&& cp -r build/frida-android-arm64 /frida_out 
