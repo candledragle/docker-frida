@@ -6,31 +6,42 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ sym ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1.3.0
+      with:
+        java-version: 1.8
+    - uses: actions/setup-node@v1.4.2
+      with: 
+        node-version: 10
+    - uses: actions/setup-python@v2
+      with:
+       python-version: '3.6'  
+   
+    - name: set ndk
+      run: echo "::set-env name=ANDROID_NDK_ROOT::$ANDROID_SDK_ROOT/ndk-bundle"
 
-    # Runs a single command using the runners shell
-    - name: make
-      run: make all
+    - name: install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential gcc-multilib lib32stdc++-5-dev flex bison
+    - name: clone frida
+      run: git clone --recurse-submodules https://github.com/frida/frida && cd frida
 
     # Runs a set of commands using the runners shell
+    - name: build
+      run: |
+       make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc
     - name: check
-      run: file ${PWD}/frida_out/frida-android-arm/bin/frida-server
-    
-    - name: upload
-      uses: actions/upload-artifact@v2
-      with:
-        name: frida-server-arm-arm64
-        path: frida_out/
-        
+      run: file /build/frida-android-arm/bin/frida-server
