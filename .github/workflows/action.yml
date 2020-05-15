@@ -38,7 +38,9 @@ jobs:
        git clone --recurse-submodules https://github.com/frida/frida && cd frida && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc
 
     - name: check
-      run: file frida/build/frida-android-arm/bin/frida-server
+      run: |
+        file frida/build/frida-android-arm/bin/frida-server
+        file frida/build/frida-android-arm64/bin/frida-server
     
     - name: upload
       uses: actions/upload-artifact@v2
