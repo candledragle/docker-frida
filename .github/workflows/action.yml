@@ -36,15 +36,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential gcc-multilib lib32stdc++-5-dev flex bison
-    - name: clone frida
-      run: git clone --recurse-submodules https://github.com/frida/frida && cd frida
 
     # Runs a set of commands using the runners shell
     - name: build
       run: |
-       pwd 
-       ls
-       make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc
+       git clone --recurse-submodules https://github.com/frida/frida && cd frida && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc
 
     - name: check
       run: file /build/frida-android-arm/bin/frida-server
