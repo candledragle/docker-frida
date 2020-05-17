@@ -19,40 +19,15 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - name: touch file
+      run: touch test.txt && echo "hello world! upload " > test.txt
 
-    - uses: actions/setup-python@v2
+    - name: Upload File
+      id: upload
+      uses: JantHsueh/upload-file-action@master
       with:
-       python-version: '3.6'  
-   
-    - name: set ndk
-      run: echo "::set-env name=ANDROID_NDK_ROOT::$ANDROID_SDK_ROOT/ndk-bundle"
-
-    - name: install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential gcc-multilib lib32stdc++-5-dev flex bison
-
-    # Runs a set of commands using the runners shell
-    - name: build
-      run: |
-       git clone --recurse-submodules https://github.com/frida/frida && cd frida && make build/frida-android-arm/lib/pkgconfig/frida-core-1.0.pc
-
-    - name: check
-      run: |
-        file frida/build/frida-android-arm/bin/frida-server
-    
-    # - name: upload
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: frida-server-arm-arm64
-    #     path: frida/build/**/frida-server
-    - name: upload
-      uses: actions/upload-release-asset@v1.0.2
-      with:
-       upload_url: http://www.vsa.ac.cn:8081/upload
-       asset_path: frida/build/frida-android-arm/bin/frida-server
-       asset_name: frida-server
-       asset_content_type: application/zip
+        url: http://www.vsa.ac.cn:8081/upload
+        fileForms: '{"file":"./test.txt"}'
       
 
    
