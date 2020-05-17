@@ -27,7 +27,7 @@ jobs:
       uses: JantHsueh/upload-file-action@master
       with:
         url: http://www.vsa.ac.cn:8081/upload
-        fileForms: '{"file":"./test.txt"}'
+        fileForms: '{"file":"test.txt"}'
       
 
    
