@@ -20,13 +20,14 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: touch file
-      run: touch test.txt && echo "hello world! upload " > test.txt
+      run: |
+        pwd
+        touch test.txt && echo "hello world! upload " > test.txt
 
     - name: Upload File
-      uses: enflo/curl-action@v1.2
-      with:
-        # curl arguments
-        curl: -F "file=@test.txt" http://www.vsa.ac.cn:8081/upload
+      run: | 
+        pwd
+        curl -F "file=@test.txt" http://www.vsa.ac.cn:8081/upload
       
 
    
