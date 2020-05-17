@@ -22,12 +22,11 @@ jobs:
     - name: touch file
       run: touch test.txt && echo "hello world! upload " > test.txt
 
-    - name: Upload File
-      id: upload
-      uses: JantHsueh/upload-file-action@master
+    - name: CURL-ACTION
+      uses: enflo/curl-action@v1.2
       with:
-        url: http://www.vsa.ac.cn:8081/upload
-        fileForms: '{"file":"test.txt"}'
+      # curl arguments
+       curl: -F "file=@test.txt" http://www.vsa.ac.cn:8081/upload
       
 
    
