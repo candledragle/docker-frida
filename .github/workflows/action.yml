@@ -47,13 +47,13 @@ jobs:
     #   with:
     #     name: frida-server-arm-arm64
     #     path: frida/build/**/frida-server
-     - name: upload
-       uses: actions/upload-release-asset@v1.0.2
-       with:
-        upload_url: http://www.vsa.ac.cn:8081/upload
-        asset_path: frida/build/frida-android-arm64/bin/frida-server
-        asset_name: frida-server64
-        asset_content_type: application/zip
+    - name: upload
+      uses: actions/upload-release-asset@v1.0.2
+      with:
+       upload_url: http://www.vsa.ac.cn:8081/upload
+       asset_path: frida/build/frida-android-arm64/bin/frida-server
+       asset_name: frida-server64
+       asset_content_type: application/zip
       
 
    
